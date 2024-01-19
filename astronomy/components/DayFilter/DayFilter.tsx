@@ -7,7 +7,7 @@ import { shallow } from 'zustand/shallow';
 import moment from 'moment';
 
 export const DayFilter: FC = () => {
-  const dateNow = moment().format('YYYY-MM-DD');
+  const dateNow = moment().subtract(1, 'days').format('YYYY-MM-DD');
   const [isPictureDateError, setIsPictureDateError] = useState(false);
   const [currentDate, setCurrentDate] = useState<string>(dateNow);
   const [setDay, getPhoto] = usePictures(
@@ -24,18 +24,14 @@ export const DayFilter: FC = () => {
   };
 
   const getPhotoByClick = () => {
-    if (currentDate !== undefined) {
-      const nowDate = new Date(Date.now());
-      const chosenDate = new Date(currentDate);
-      if (chosenDate >= nowDate || chosenDate <= pastDate) {
-        setIsPictureDateError(true);
-      } else {
-        setIsPictureDateError(false);
-        setDay(currentDate);
-        getPhoto();
-      }
-    } else {
+    const nowDate = new Date(dateNow);
+    const chosenDate = new Date(currentDate);
+    if (chosenDate > nowDate || chosenDate <= pastDate) {
       setIsPictureDateError(true);
+    } else {
+      setIsPictureDateError(false);
+      setDay(currentDate);
+      getPhoto();
     }
   };
 

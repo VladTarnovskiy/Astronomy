@@ -7,7 +7,7 @@ import { shallow } from 'zustand/shallow';
 import moment from 'moment';
 
 export const PeriodFilter: FC = () => {
-  const dateNow = moment().format('YYYY-MM-DD');
+  const dateNow = moment().subtract(1, 'days').format('YYYY-MM-DD');
   const [isPeriodDateError, setIsPeriodDateError] = useState(false);
   const [currentFromDate, setCurrentFromDate] = useState<string>(dateNow);
   const [currentToDate, setCurrentToDate] = useState<string>(dateNow);
@@ -19,26 +19,22 @@ export const PeriodFilter: FC = () => {
   const errorMessage = `Date must be between 07/16/1995 and ${dateNow}`;
 
   const getPeriodPhotosByClick = () => {
-    if (currentFromDate !== undefined && currentToDate !== undefined) {
-      const nowDate = new Date(Date.now());
-      const chosenFromDate = new Date(currentFromDate);
-      const chosenToDate = new Date(currentToDate);
-      if (
-        chosenFromDate >= nowDate ||
-        chosenFromDate <= pastDate ||
-        chosenToDate >= nowDate ||
-        chosenToDate <= pastDate ||
-        chosenToDate < chosenFromDate
-      ) {
-        setIsPeriodDateError(true);
-      } else {
-        setCount(1);
-        setDatePeriod(currentFromDate, currentToDate);
-        getPeriodPhotos();
-        setIsPeriodDateError(false);
-      }
-    } else {
+    const nowDate = new Date(dateNow);
+    const chosenFromDate = new Date(currentFromDate);
+    const chosenToDate = new Date(currentToDate);
+    if (
+      chosenFromDate > nowDate ||
+      chosenFromDate <= pastDate ||
+      chosenToDate > nowDate ||
+      chosenToDate <= pastDate ||
+      chosenToDate < chosenFromDate
+    ) {
       setIsPeriodDateError(true);
+    } else {
+      setCount(1);
+      setDatePeriod(currentFromDate, currentToDate);
+      getPeriodPhotos();
+      setIsPeriodDateError(false);
     }
   };
 

@@ -1,6 +1,5 @@
 'use client';
-import { FC, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default function Error({
   error,
@@ -11,14 +10,10 @@ export default function Error({
     console.error(error);
   }, [error]);
 
-  const router = useRouter();
   return (
-    <div className="m-auto flex flex-col text-teal-500 justify-center items-center w-fit">
-      <div className="mt-2">Something went wrong.</div>
-      <button
-        onClick={() => router.back()}
-        className="h-10 rounded-md mt-6 p-2 text-md shadow-teal-500 shadow-sm hover:shadow-yellow-400 bg-gray-800"
-      >
+    <div className="m-auto flex flex-col text-white justify-center items-center w-fit">
+      <div className="mt-12 mb-12">Something went wrong.</div>
+      <button className="w-32 h-12 bg-blue-800 rounded-sm text-lg font-semibold hover:scale-[1.02] transition-all">
         Go back
       </button>
     </div>
