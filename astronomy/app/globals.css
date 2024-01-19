@@ -6,7 +6,7 @@ body {
   color: white;
   background-color: black;
   font-size: 16px;
-  background-image: url("../assets/Earth-bg.jpg");
+  background-image: url("../public/Earth-bg.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;

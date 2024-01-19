@@ -1,26 +1,22 @@
 "use client";
 import { ChangeEvent, FC, useState } from "react";
 import Image from "next/image";
-import SearchImg from "@assets/search.svg";
-import { usePictures } from "../../../store/store";
+import SearchImg from "@/public/search.svg";
+import { usePictures } from "../../store/store";
 import { shallow } from "zustand/shallow";
-import { getCurrentDate } from "@/utils/getDate";
 import moment from "moment";
 
 export const PeriodFilter: FC = () => {
+  const dateNow = moment().format("YYYY-MM-DD");
   const [isPeriodDateError, setIsPeriodDateError] = useState(false);
-  const [currentFromDate, setCurrentFromDate] = useState<string>(
-    moment().format("YYYY-MM-DD")
-  );
-  const [currentToDate, setCurrentToDate] = useState<string>(
-    moment().format("YYYY-MM-DD")
-  );
+  const [currentFromDate, setCurrentFromDate] = useState<string>(dateNow);
+  const [currentToDate, setCurrentToDate] = useState<string>(dateNow);
   const [setDatePeriod, getPeriodPhotos, setCount] = usePictures(
     (state) => [state.setDatePeriod, state.getPeriodPhotos, state.setCount],
     shallow
   );
   const pastDate = new Date("07/16/1995");
-  const errorMessage = `Date must be between 07/16/1995 and ${getCurrentDate()}`;
+  const errorMessage = `Date must be between 07/16/1995 and ${dateNow}`;
 
   const getPeriodPhotosByClick = () => {
     if (currentFromDate !== undefined && currentToDate !== undefined) {
@@ -64,7 +60,7 @@ export const PeriodFilter: FC = () => {
           <div className="relative flex flex-col justify-start mb-5 md:mb-0 min-w-[200px] mr-2">
             <label
               htmlFor="from"
-              className="text-sm absolute left-2 -top-4 text-blue-800 bg-white rounded-md px-2"
+              className="text-xs absolute left-2 -top-3 text-blue-800 bg-white rounded-md px-2"
             >
               From
             </label>
@@ -73,7 +69,7 @@ export const PeriodFilter: FC = () => {
               type="date"
               id="from"
               placeholder="from"
-              min="1995-16-07"
+              min="1995-07-16"
               value={currentFromDate}
               onChange={onChangeFromDate}
             />
@@ -81,7 +77,7 @@ export const PeriodFilter: FC = () => {
           <div className="relative flex flex-col justify-start min-w-[200px] mr-2">
             <label
               htmlFor="to"
-              className="text-sm absolute left-2 -top-4 text-blue-800 bg-white rounded-md px-2"
+              className="text-xs absolute left-2 -top-3 text-blue-800 bg-white rounded-md px-2"
             >
               To
             </label>
@@ -90,7 +86,7 @@ export const PeriodFilter: FC = () => {
               type="date"
               id="to"
               placeholder="to"
-              min="1995-16-07"
+              min="1995-07-16"
               value={currentToDate}
               onChange={onChangeToDate}
             />

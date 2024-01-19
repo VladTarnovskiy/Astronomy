@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import Logo from "@assets/NASA_logo.svg";
+import Logo from "@/public/NASA_logo.svg";
 
 export const Header: FC = () => {
   return (

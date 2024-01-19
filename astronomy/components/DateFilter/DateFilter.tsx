@@ -1,24 +1,22 @@
 "use client";
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import Image from "next/image";
-import SearchImg from "@assets/search.svg";
-import { usePictures } from "../../../store/store";
+import SearchImg from "@/public/search.svg";
+import { usePictures } from "../../store/store";
 import { shallow } from "zustand/shallow";
-import { getCurrentDate } from "@/utils/getDate";
 import moment from "moment";
 
 export const DateFilter: FC = () => {
+  const dateNow = moment().format("YYYY-MM-DD");
   const [isPictureDateError, setIsPictureDateError] = useState(false);
-  const [currentDate, setCurrentDate] = useState<string>(
-    moment().format("YYYY-MM-DD")
-  );
+  const [currentDate, setCurrentDate] = useState<string>(dateNow);
   const [setDate, getPhoto] = usePictures(
     (state) => [state.setDate, state.getPhoto],
     shallow
   );
 
   const pastDate = new Date("07/16/1995");
-  const errorMessage = `Date must be between 07/16/1995 and ${getCurrentDate()}`;
+  const errorMessage = `Date must be between 07/16/1995 and ${dateNow}`;
 
   const onChangeDate = (date: ChangeEvent<HTMLInputElement>) => {
     const newDate = moment(date.target.value).format("YYYY-MM-DD");
@@ -32,14 +30,20 @@ export const DateFilter: FC = () => {
       if (chosenDate >= nowDate || chosenDate <= pastDate) {
         setIsPictureDateError(true);
       } else {
+        setIsPictureDateError(false);
         setDate(currentDate);
         getPhoto();
-        setIsPictureDateError(false);
       }
     } else {
       setIsPictureDateError(true);
     }
   };
+
+  useEffect(() => {
+    setIsPictureDateError(false);
+    setDate(currentDate);
+    getPhoto();
+  }, []);
 
   return (
     <div className="flex p-2 justify-center items-center mb-8">
@@ -47,7 +51,7 @@ export const DateFilter: FC = () => {
       <div className="flex flex-col justify-start w-[200px] mr-2 relative">
         <label
           htmlFor="date"
-          className="text-sm absolute left-2 -top-4 text-blue-800 bg-white rounded-md px-2"
+          className="text-xs absolute left-2 -top-3 text-blue-800 bg-white rounded-md px-2"
         >
           Date
         </label>
@@ -57,7 +61,7 @@ export const DateFilter: FC = () => {
           id="date"
           placeholder="date"
           value={currentDate}
-          min="1995-16-07"
+          min="1995-07-16"
           onChange={onChangeDate}
         />
         {isPictureDateError && (

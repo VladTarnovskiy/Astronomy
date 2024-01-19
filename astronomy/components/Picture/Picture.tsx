@@ -1,7 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import Logo from "@assets/NASA_logo.svg";
-import { IPicture } from "../../../types/photosResponse";
+import { IPicture } from "../../types/photosResponse";
 
 interface IProps {
   picture: IPicture;

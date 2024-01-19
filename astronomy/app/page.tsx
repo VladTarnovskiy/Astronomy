@@ -1,9 +1,8 @@
 "use client";
-
 import { shallow } from "zustand/shallow";
 import { usePictures } from "../store/store";
-import { Filters } from "./components/Filters/Filters";
-import { Picture } from "./components/Picture/Picture";
+import { Filters } from "../components/Filters/Filters";
+import { Picture } from "../components/Picture/Picture";
 
 export default function Main() {
   const [isPeriodPhotos, photo, periodPhotos, count, setCount] = usePictures(
