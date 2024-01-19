@@ -47,19 +47,19 @@ export const DateFilter: FC = () => {
 
   return (
     <div className="flex p-2 justify-center items-center mb-8">
-      <h2 className="mr-2">Date:</h2>
+      <h2 className="mr-2">Day:</h2>
       <div className="flex flex-col justify-start w-[200px] mr-2 relative">
         <label
           htmlFor="date"
           className="text-xs absolute left-2 -top-3 text-blue-800 bg-white rounded-md px-2"
         >
-          Date
+          Day
         </label>
         <input
           className="rounded-md h-8 border-[1px] border-color-white text-black outline-none focus:border-blue-800 p-1"
           type="date"
           id="date"
-          placeholder="date"
+          placeholder="day"
           value={currentDate}
           min="1995-07-16"
           onChange={onChangeDate}
