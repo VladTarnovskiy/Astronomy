@@ -1,6 +1,6 @@
-import { IPicture } from "../types/photosResponse";
-import { getPeriodPictures, getPicture } from "../services/getPhotosData";
-import { createWithEqualityFn } from "zustand/traditional";
+import { IPicture } from '../types/photosResponse';
+import { getPeriodPictures, getPicture } from '../services/getPhotosData';
+import { createWithEqualityFn } from 'zustand/traditional';
 
 export interface IDatePeriod {
   from: string | null;

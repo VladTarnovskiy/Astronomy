@@ -1,10 +1,10 @@
-import { IDatePeriod } from "@/store/store";
-import { IPicture } from "../types/photosResponse";
+import { IDatePeriod } from '@/store/store';
+import { IPicture } from '../types/photosResponse';
 
-const API_KEY = "EQT9PjZFJsMNgZcQIs9WDECBDzz4sHbNXpVBYsfY";
+const API_KEY = 'EQT9PjZFJsMNgZcQIs9WDECBDzz4sHbNXpVBYsfY';
 
 export const getPicture = async (date: string | null) => {
-  if (date === null) throw new Error("Date undefined.");
+  if (date === null) throw new Error('Date undefined.');
 
   try {
     const response = await fetch(
@@ -13,12 +13,12 @@ export const getPicture = async (date: string | null) => {
     const data = await response.json();
     return data;
   } catch {
-    throw new Error("API error.");
+    throw new Error('API error.');
   }
 };
 
 export const getPeriodPictures = async ({ from, to }: IDatePeriod) => {
-  if (from === null || to === null) throw new Error("Date undefined.");
+  if (from === null || to === null) throw new Error('Date undefined.');
 
   try {
     const response = await fetch(
@@ -27,6 +27,6 @@ export const getPeriodPictures = async ({ from, to }: IDatePeriod) => {
     const data = await response.json();
     return data;
   } catch {
-    throw new Error("API error.");
+    throw new Error('API error.');
   }
 };

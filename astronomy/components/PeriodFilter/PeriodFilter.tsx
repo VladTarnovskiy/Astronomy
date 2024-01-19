@@ -1,13 +1,13 @@
-"use client";
-import { ChangeEvent, FC, useState } from "react";
-import Image from "next/image";
-import SearchImg from "@/public/search.svg";
-import { usePictures } from "../../store/store";
-import { shallow } from "zustand/shallow";
-import moment from "moment";
+'use client';
+import { ChangeEvent, FC, useState } from 'react';
+import Image from 'next/image';
+import SearchImg from '@/public/search.svg';
+import { usePictures } from '../../store/store';
+import { shallow } from 'zustand/shallow';
+import moment from 'moment';
 
 export const PeriodFilter: FC = () => {
-  const dateNow = moment().format("YYYY-MM-DD");
+  const dateNow = moment().format('YYYY-MM-DD');
   const [isPeriodDateError, setIsPeriodDateError] = useState(false);
   const [currentFromDate, setCurrentFromDate] = useState<string>(dateNow);
   const [currentToDate, setCurrentToDate] = useState<string>(dateNow);
@@ -15,7 +15,7 @@ export const PeriodFilter: FC = () => {
     (state) => [state.setDatePeriod, state.getPeriodPhotos, state.setCount],
     shallow
   );
-  const pastDate = new Date("07/16/1995");
+  const pastDate = new Date('07/16/1995');
   const errorMessage = `Date must be between 07/16/1995 and ${dateNow}`;
 
   const getPeriodPhotosByClick = () => {
@@ -43,12 +43,12 @@ export const PeriodFilter: FC = () => {
   };
 
   const onChangeFromDate = (date: ChangeEvent<HTMLInputElement>) => {
-    const newDate = moment(date.target.value).format("YYYY-MM-DD");
+    const newDate = moment(date.target.value).format('YYYY-MM-DD');
     setCurrentFromDate(newDate);
   };
 
   const onChangeToDate = (date: ChangeEvent<HTMLInputElement>) => {
-    const newDate = moment(date.target.value).format("YYYY-MM-DD");
+    const newDate = moment(date.target.value).format('YYYY-MM-DD');
     setCurrentToDate(newDate);
   };
 

@@ -1,13 +1,13 @@
-"use client";
-import { ChangeEvent, FC, useEffect, useState } from "react";
-import Image from "next/image";
-import SearchImg from "@/public/search.svg";
-import { usePictures } from "../../store/store";
-import { shallow } from "zustand/shallow";
-import moment from "moment";
+'use client';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
+import Image from 'next/image';
+import SearchImg from '@/public/search.svg';
+import { usePictures } from '../../store/store';
+import { shallow } from 'zustand/shallow';
+import moment from 'moment';
 
 export const DateFilter: FC = () => {
-  const dateNow = moment().format("YYYY-MM-DD");
+  const dateNow = moment().format('YYYY-MM-DD');
   const [isPictureDateError, setIsPictureDateError] = useState(false);
   const [currentDate, setCurrentDate] = useState<string>(dateNow);
   const [setDate, getPhoto] = usePictures(
@@ -15,11 +15,11 @@ export const DateFilter: FC = () => {
     shallow
   );
 
-  const pastDate = new Date("07/16/1995");
+  const pastDate = new Date('07/16/1995');
   const errorMessage = `Date must be between 07/16/1995 and ${dateNow}`;
 
   const onChangeDate = (date: ChangeEvent<HTMLInputElement>) => {
-    const newDate = moment(date.target.value).format("YYYY-MM-DD");
+    const newDate = moment(date.target.value).format('YYYY-MM-DD');
     setCurrentDate(newDate);
   };
 

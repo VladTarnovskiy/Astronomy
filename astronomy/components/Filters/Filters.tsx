@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { DateFilter } from "../DateFilter/DateFilter";
-import { PeriodFilter } from "../PeriodFilter/PeriodFilter";
+import { FC } from 'react';
+import { DateFilter } from '../DateFilter/DateFilter';
+import { PeriodFilter } from '../PeriodFilter/PeriodFilter';
 
 export const Filters: FC = () => {
   return (

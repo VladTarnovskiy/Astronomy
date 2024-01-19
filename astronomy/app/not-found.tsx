@@ -1,5 +1,5 @@
-import NotFoundImg from "@/public/notfound-dino.svg";
-import Image from "next/image";
+import NotFoundImg from '@/public/notfound-dino.svg';
+import Image from 'next/image';
 
 export default function NotFoundPage() {
   return (

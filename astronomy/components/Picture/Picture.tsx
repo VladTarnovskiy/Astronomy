@@ -1,6 +1,6 @@
-import { FC } from "react";
-import Image from "next/image";
-import { IPicture } from "../../types/photosResponse";
+import { FC } from 'react';
+import Image from 'next/image';
+import { IPicture } from '../../types/photosResponse';
 
 interface IProps {
   picture: IPicture;

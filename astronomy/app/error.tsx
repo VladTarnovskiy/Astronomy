@@ -1,6 +1,6 @@
-"use client";
-import { FC, useEffect } from "react";
-import { useRouter } from "next/router";
+'use client';
+import { FC, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Error({
   error,

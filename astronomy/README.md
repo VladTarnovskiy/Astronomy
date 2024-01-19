@@ -1,6 +1,6 @@
 # NASA Astronomical Photo of the Day.
 
-- Deploy: https://modsenfilms-vladtarnovskiy.netlify.app/
+- Deploy: https://nasa-astronomy-vladtarnovskiy.vercel.app/
 
 ## Structure:
 

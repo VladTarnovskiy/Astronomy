@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import "./globals.css";
-import { Header } from "../components/Header/Header";
+import type { Metadata } from 'next';
+import { Roboto } from 'next/font/google';
+import './globals.css';
+import { Header } from '../components/Header/Header';
 
 const roboto = Roboto({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  display: "swap",
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Astronomy",
-  description: "Astronomy picture of the day",
+  title: 'Astronomy',
+  description: 'Astronomy picture of the day',
 };
 
 export default function RootLayout({

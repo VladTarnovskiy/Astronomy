@@ -1,7 +1,7 @@
-import { FC } from "react";
-import Image from "next/image";
-import Logo from "@/public/NASA_logo.svg";
-import Link from "next/link";
+import { FC } from 'react';
+import Image from 'next/image';
+import Logo from '@/public/NASA_logo.svg';
+import Link from 'next/link';
 
 export const Header: FC = () => {
   return (
