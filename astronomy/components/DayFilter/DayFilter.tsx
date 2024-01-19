@@ -6,12 +6,12 @@ import { usePictures } from '../../store/store';
 import { shallow } from 'zustand/shallow';
 import moment from 'moment';
 
-export const DateFilter: FC = () => {
+export const DayFilter: FC = () => {
   const dateNow = moment().format('YYYY-MM-DD');
   const [isPictureDateError, setIsPictureDateError] = useState(false);
   const [currentDate, setCurrentDate] = useState<string>(dateNow);
-  const [setDate, getPhoto] = usePictures(
-    (state) => [state.setDate, state.getPhoto],
+  const [setDay, getPhoto] = usePictures(
+    (state) => [state.setDay, state.getPhoto],
     shallow
   );
 
@@ -31,7 +31,7 @@ export const DateFilter: FC = () => {
         setIsPictureDateError(true);
       } else {
         setIsPictureDateError(false);
-        setDate(currentDate);
+        setDay(currentDate);
         getPhoto();
       }
     } else {
@@ -41,7 +41,7 @@ export const DateFilter: FC = () => {
 
   useEffect(() => {
     setIsPictureDateError(false);
-    setDate(currentDate);
+    setDay(currentDate);
     getPhoto();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
