@@ -1,25 +1,29 @@
-import { create } from "zustand";
 import { IPicture } from "../types/photosResponse";
-import { getPicture } from "../services/getPhotosData";
+import { getPeriodPictures, getPicture } from "../services/getPhotosData";
+import { createWithEqualityFn } from "zustand/traditional";
+
+export interface IDatePeriod {
+  from: string | null;
+  to: string | null;
+}
 
 type UsePictures = {
   isPeriodPhotos: boolean;
   photo: IPicture | null;
   periodPhotos: IPicture[] | null;
-  datePeriod: {
-    from: string | null;
-    to: string | null;
-  };
+  datePeriod: IDatePeriod;
   date: string | null;
-  loading: boolean;
+  isLoading: boolean;
   getPhoto: () => Promise<void>;
+  getPeriodPhotos: () => Promise<void>;
   setDatePeriod: (from: string, to: string) => void;
+  setDate: (date: string) => void;
 };
 
-export const usePictures = create<UsePictures>()((set, get) => ({
+export const usePictures = createWithEqualityFn<UsePictures>()((set, get) => ({
   photo: null,
   periodPhotos: null,
-  loading: false,
+  isLoading: false,
   isPeriodPhotos: false,
   datePeriod: {
     from: null,
@@ -27,11 +31,18 @@ export const usePictures = create<UsePictures>()((set, get) => ({
   },
   date: null,
   getPhoto: async () => {
-    set({ loading: true });
+    set({ isLoading: true });
     set({ isPeriodPhotos: false });
     const date = get().date;
     const photo = await getPicture(date);
-    set({ photo, loading: false });
+    set({ photo, isLoading: false });
+  },
+  getPeriodPhotos: async () => {
+    set({ isLoading: true });
+    set({ isPeriodPhotos: true });
+    const datePeriod = get().datePeriod;
+    const periodPhotos = await getPeriodPictures(datePeriod);
+    set({ periodPhotos, isLoading: false });
   },
   setDatePeriod: (from, to) =>
     set({
@@ -40,4 +51,5 @@ export const usePictures = create<UsePictures>()((set, get) => ({
         to,
       },
     }),
+  setDate: (date) => set({ date: date }),
 }));
