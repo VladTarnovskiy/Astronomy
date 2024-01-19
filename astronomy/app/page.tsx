@@ -18,7 +18,7 @@ export default function Main() {
   );
 
   return (
-    <main>
+    <main className="px-3">
       <Filters />
       <div className="m-auto w-fit mb-10">
         {!isPeriodPhotos && photo && <Picture picture={photo} />}

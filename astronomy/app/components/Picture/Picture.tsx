@@ -10,7 +10,7 @@ interface IProps {
 export const Picture: FC<IProps> = ({ picture }) => {
   const pictureImg = picture.hdurl;
   return (
-    <div className=" max-w-[1000px] w-full p-2 shadow-md shadow-blue-800 mb-3 bg-black/60">
+    <div className=" max-w-[1000px] w-full p-2 shadow-md shadow-blue-800 mb-12 bg-black/60">
       <div className="flex justify-between items-center mb-2">
         <div className="text-lg">{picture.title}</div>
         <div>{picture.date}</div>

@@ -7,7 +7,7 @@ import { shallow } from "zustand/shallow";
 import { getCurrentDate } from "@/utils/getDate";
 import moment from "moment";
 
-export const PeriodFilters: FC = () => {
+export const PeriodFilter: FC = () => {
   const [isPeriodDateError, setIsPeriodDateError] = useState(false);
   const [currentFromDate, setCurrentFromDate] = useState<string>(
     moment().format("YYYY-MM-DD")
@@ -56,7 +56,7 @@ export const PeriodFilters: FC = () => {
   };
 
   return (
-    <div>
+    <div className="mb-4">
       <div className="flex p-2 justify-center items-center relative">
         <h2 className="mr-2">Period:</h2>
         <div className="relative flex flex-col justify-start min-w-[200px] mr-2">
