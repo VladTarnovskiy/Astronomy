@@ -1,5 +1,4 @@
 import { IDatePeriod } from '@/store/store';
-import { IPicture } from '../types/photosResponse';
 
 const API_KEY = 'EQT9PjZFJsMNgZcQIs9WDECBDzz4sHbNXpVBYsfY';
 
