@@ -34,7 +34,7 @@ export default function Main() {
               {count * 6 < periodPhotos.length && (
                 <button
                   onClick={setNextPage}
-                  className="w-32 h-12 bg-blue-800 rounded-sm text-lg font-semibold"
+                  className="w-32 h-12 bg-blue-800 rounded-sm text-lg font-semibold hover:scale-[1.02] transition-all"
                 >
                   Show more
                 </button>
