@@ -42,9 +42,9 @@ export const DateFilter: FC = () => {
   };
 
   return (
-    <div className="flex p-2 justify-center items-center mb-4">
+    <div className="flex p-2 justify-center items-center mb-8">
       <h2 className="mr-2">Date:</h2>
-      <div className="relative flex flex-col justify-start w-[200px] mr-2">
+      <div className="flex flex-col justify-start w-[200px] mr-2 relative">
         <label
           htmlFor="date"
           className="text-sm absolute left-2 -top-4 text-blue-800 bg-white rounded-md px-2"
@@ -61,7 +61,7 @@ export const DateFilter: FC = () => {
           onChange={onChangeDate}
         />
         {isPictureDateError && (
-          <div className="absolute left-0 -bottom-10 w-[200px] text-sm text-red-500">
+          <div className="absolute left-0 -bottom-5 text-sm text-red-500 w-[332px]">
             {errorMessage}
           </div>
         )}
