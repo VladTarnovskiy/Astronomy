@@ -43,6 +43,7 @@ export const DateFilter: FC = () => {
     setIsPictureDateError(false);
     setDate(currentDate);
     getPhoto();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
