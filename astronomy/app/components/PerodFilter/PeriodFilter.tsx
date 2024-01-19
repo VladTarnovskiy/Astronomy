@@ -15,8 +15,8 @@ export const PeriodFilter: FC = () => {
   const [currentToDate, setCurrentToDate] = useState<string>(
     moment().format("YYYY-MM-DD")
   );
-  const [setDatePeriod, getPeriodPhotos] = usePictures(
-    (state) => [state.setDatePeriod, state.getPeriodPhotos],
+  const [setDatePeriod, getPeriodPhotos, setCount] = usePictures(
+    (state) => [state.setDatePeriod, state.getPeriodPhotos, state.setCount],
     shallow
   );
   const pastDate = new Date("07/16/1995");
@@ -36,6 +36,7 @@ export const PeriodFilter: FC = () => {
       ) {
         setIsPeriodDateError(true);
       } else {
+        setCount(1);
         setDatePeriod(currentFromDate, currentToDate);
         getPeriodPhotos();
         setIsPeriodDateError(false);

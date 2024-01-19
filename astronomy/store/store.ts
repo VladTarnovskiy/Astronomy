@@ -14,16 +14,19 @@ type UsePictures = {
   datePeriod: IDatePeriod;
   date: string | null;
   isLoading: boolean;
+  count: number;
   getPhoto: () => Promise<void>;
   getPeriodPhotos: () => Promise<void>;
   setDatePeriod: (from: string, to: string) => void;
   setDate: (date: string) => void;
+  setCount: (count: number) => void;
 };
 
 export const usePictures = createWithEqualityFn<UsePictures>()((set, get) => ({
   photo: null,
   periodPhotos: null,
   isLoading: false,
+  count: 1,
   isPeriodPhotos: false,
   datePeriod: {
     from: null,
@@ -52,4 +55,8 @@ export const usePictures = createWithEqualityFn<UsePictures>()((set, get) => ({
       },
     }),
   setDate: (date) => set({ date: date }),
+  setCount: (count) =>
+    set({
+      count,
+    }),
 }));
