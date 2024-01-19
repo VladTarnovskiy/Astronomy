@@ -53,7 +53,7 @@ export const DayFilter: FC = () => {
           Day
         </label>
         <input
-          className="rounded-md h-8 border-[1px] border-color-white text-black outline-none focus:border-blue-800 p-1"
+          className="rounded-sm h-8 border-[1px] border-color-white text-black outline-none focus:border-blue-800 p-1"
           type="date"
           id="date"
           placeholder="day"
@@ -69,7 +69,7 @@ export const DayFilter: FC = () => {
       </div>
       <button
         onClick={getPhotoByClick}
-        className="h-8 w-8 rounded-md hover:cursor-pointer bg-blue-800 flex justify-center items-center hover:scale-[1.03] hover:opacity-80"
+        className="h-8 w-8 rounded-sm hover:cursor-pointer bg-blue-800 flex justify-center items-center hover:scale-[1.03] hover:opacity-80"
       >
         <Image src={SearchImg} alt="search" height={20} width={20} />
       </button>
